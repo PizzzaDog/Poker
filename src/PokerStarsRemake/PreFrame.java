@@ -4,24 +4,26 @@ import javax.swing.*;
 import java.awt.*;
 
 class PreFrame extends JFrame {
+
     PreFrame() {
         super("PokerStarsRemake");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        Box box = Box.createVerticalBox(), box1 = Box.createHorizontalBox();
+        Box box = Box.createVerticalBox();
+        Box box1 = Box.createHorizontalBox();
         JLabel hello = new JLabel("Поиграем в покер?");
-        hello.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        hello.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
         box.add(Box.createVerticalGlue());
         box.add(hello);
         box.add(Box.createVerticalGlue());
         JButton yes = new JButton("Yes");
-        yes.setAlignmentX(JComponent.RIGHT_ALIGNMENT);
+        yes.setAlignmentX(java.awt.Component.RIGHT_ALIGNMENT);
         yes.addActionListener(actionEvent -> {
             dispose();
-            PrepareFrame togo = new PrepareFrame();
+            new PrepareFrame();
         });
         JButton no = new JButton("No");
-        no.setAlignmentX(JComponent.LEFT_ALIGNMENT);
+        no.setAlignmentX(java.awt.Component.LEFT_ALIGNMENT);
         no.addActionListener(actionEvent -> dispose());
         box1.add(yes);
         box1.add(Box.createHorizontalStrut(20));
@@ -35,7 +37,7 @@ class PreFrame extends JFrame {
     static class PrepareFrame extends JFrame {
         PrepareFrame() {
             super("PokerStarsRemake");
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             setLocationRelativeTo(null);
             Box box = Box.createVerticalBox();
             box.add(Box.createVerticalGlue());
@@ -63,7 +65,7 @@ class PreFrame extends JFrame {
                     okPlayers.addActionListener(actionEvent1 -> {
                         //Game.setNumPlayers(numOfPlayers);
                         Game.newGame(fields);
-                        GameFrame  g = new GameFrame();
+                        new GameFrame();
                         dispose();
                     });
                     panel.add(okPlayers);

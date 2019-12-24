@@ -9,7 +9,7 @@ import java.util.Random;
 class Game {
     private static Random r = new Random();
     //private static int numPlayers;
-    private static ArrayList<Card> Deck;
+    private static ArrayList<Card> deck;
     private static ArrayList<Player> players = new ArrayList<>();
     private static ArrayList<Card> computerHand = new ArrayList<>();
 //    static void setNumPlayers(int num) {
@@ -22,35 +22,41 @@ class Game {
         }
         startGame();
     }
+
     static void startGame() {
-        Deck = new ArrayList<>(Final.DECKCARDS);
+        deck = new ArrayList<>(Final.DECKCARDS);
         computerHand = new ArrayList<>();
         for(Player p : players) {
             p.setHand(new ArrayList<>(Arrays.asList(getCardFromDeck(), getCardFromDeck())));
         }
         CheckCombination.setAllPlayers(players);
     }
+
     static void round1() {
         for (int i = 0; i < 3; i++) {
             computerHand.add(getCardFromDeck());
         }
         CheckCombination.setAllPlayers(players);
     }
+
     static void round2() {
         computerHand.add(getCardFromDeck());
         CheckCombination.setAllPlayers(players);
     }
+
     static void round3() {
         computerHand.add(getCardFromDeck());
         CheckCombination.setAllPlayers(players);
     }
 
     private static Card getCardFromDeck() {
-        return Deck.remove(r.nextInt(Deck.size() ));
+        return deck.remove(r.nextInt(deck.size() ));
     }
+
     static boolean computerHandNotNull() {
-        return computerHand.size() > 0;
+        return computerHand.isEmpty();
     }
+
     static String getStringComputerHand() {
         StringBuilder cHand = new StringBuilder();
         for (Card c : computerHand) {
@@ -58,6 +64,7 @@ class Game {
         }
         return (cHand.toString());
     }
+
     static ArrayList<Player> getPlayers() {
         return players;
     }

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class TestFrame extends JFrame {
     TestFrame() {
         super("Test");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(2,2,5,5));
@@ -16,12 +16,8 @@ public class TestFrame extends JFrame {
         panel.add(new JLabel("test2"));
         JButton next = new JButton("go");
         panel.add(next);
-        next.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                setContentPane(nextRound(panel));
-            }
-        });
+    next.addActionListener(
+            actionEvent -> setContentPane(nextRound(panel)));
         setSize(200, 200);
         setContentPane(panel);
         setVisible(true);

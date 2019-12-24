@@ -15,7 +15,8 @@ class CheckCombination {
         }
     }
     private static void setCombinations(Player player) {
-        String s = "", toRoyal;
+        String s = "";
+        String toRoyal;
         if (Game.computerHandNotNull()) s = Game.getStringComputerHand();
         s += player.getStringHand();
         toRoyal = s;

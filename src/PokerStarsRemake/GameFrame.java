@@ -6,9 +6,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 class GameFrame extends JFrame {
+    private static final String NEXT_ROUND = "Next round";
     GameFrame() {
         super("PokerStarsRemake");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         ArrayList<Player> players = Game.getPlayers();
         setLocationRelativeTo(null);
         setSize(400, players.size() * 50 + 20);
@@ -18,7 +19,7 @@ class GameFrame extends JFrame {
     private JPanel startGame() {
         Game.startGame();
         JPanel panel = panelPattern();
-        JButton next = new JButton("Next round");
+        JButton next = new JButton(NEXT_ROUND);
         next.addActionListener(actionEvent -> {
             setVisible(false);
             setContentPane(round1());
@@ -30,7 +31,7 @@ class GameFrame extends JFrame {
     private JPanel round1() {
         Game.round1();
         JPanel panel = panelPattern();
-        JButton next = new JButton("Next round");
+        JButton next = new JButton(NEXT_ROUND);
         next.addActionListener(actionEvent -> {
             setVisible(false);
             setContentPane(round2());
@@ -42,7 +43,7 @@ class GameFrame extends JFrame {
     private JPanel round2() {
         Game.round2();
         JPanel panel = panelPattern();
-        JButton next = new JButton("Next round");
+        JButton next = new JButton(NEXT_ROUND);
         next.addActionListener(actionEvent -> {
             setVisible(false);
             setContentPane(round3());

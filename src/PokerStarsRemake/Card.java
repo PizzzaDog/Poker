@@ -7,10 +7,10 @@ public class Card {
     Card(String cardString) {
         this.cardString = cardString;
     }
-    Card(String name, int Index, int Priority) {
+    Card(String name, int index, int priority) {
         this.cardString = name;
-        this.cardIndex = Index;
-        this.cardPriority = Priority;
+        this.cardIndex = index;
+        this.cardPriority = priority;
     }
     String getCardString() {
         return cardString;

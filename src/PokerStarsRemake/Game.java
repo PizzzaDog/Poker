@@ -12,10 +12,7 @@ class Game {
     private static ArrayList<Card> deck;
     private static ArrayList<Player> players = new ArrayList<>();
     private static ArrayList<Card> computerHand = new ArrayList<>();
-//    static void setNumPlayers(int num) {
-//        numPlayers = num;
-//        System.out.println("Players num is " + num);
-//    }
+
     static void newGame(JTextField[] names) {
         for(JTextField name : names) {
             players.add(new Player(name.getText()));
@@ -54,7 +51,7 @@ class Game {
     }
 
     static boolean computerHandNotNull() {
-        return computerHand.isEmpty();
+        return !computerHand.isEmpty();
     }
 
     static String getStringComputerHand() {

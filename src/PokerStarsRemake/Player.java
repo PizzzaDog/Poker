@@ -16,6 +16,10 @@ class Player {
     this.hand = hand;
   }
 
+  ArrayList<Card> getHand() {
+    return this.hand;
+  }
+
   String getStringHand() {
     return (hand.get(0).getCardString() + hand.get(1).getCardString());
   }

@@ -62,6 +62,10 @@ class Game {
         return (cHand.toString());
     }
 
+    static ArrayList<Card> getComputerHand() {
+        return computerHand;
+    }
+
     static ArrayList<Player> getPlayers() {
         return players;
     }

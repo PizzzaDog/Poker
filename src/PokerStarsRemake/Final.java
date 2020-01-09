@@ -13,6 +13,7 @@ class Final {
 //            "\u2663J", "\u2663Q", "\u2663K", "\u2663A",
 //            "\u26602", "\u26603", "\u26604", "\u26605", "\u26606", "\u26607", "\u26608", "\u26609", "\u266010",
 //            "\u2660J", "\u2660Q", "\u2660K", "\u2660A"));
+
     static final ArrayList<Card> DECKCARDS = new ArrayList<>(Arrays.asList(
             new Card("\u26662", 1, 2),
             new Card("\u26663", 2, 3),

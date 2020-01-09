@@ -8,7 +8,10 @@ class PreFrame extends JFrame {
     PreFrame() {
         super("PokerStarsRemake");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
+        setSize(250, 200);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((dim.width/2-getSize().width/2), (dim.height/2-getSize().height/2));
         Box box = Box.createVerticalBox();
         Box box1 = Box.createHorizontalBox();
         JLabel hello = new JLabel("Поиграем в покер?");
@@ -30,7 +33,6 @@ class PreFrame extends JFrame {
         box1.add(no);
         box.add(box1);
         setContentPane(box);
-        setSize(250, 200);
         setVisible(true);
     }
 

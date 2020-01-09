@@ -11,8 +11,9 @@ class GameFrame extends JFrame {
         super("PokerStarsRemake");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         ArrayList<Player> players = Game.getPlayers();
-        setLocationRelativeTo(null);
         setSize(400, players.size() * 50 + 20);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((dim.width/2-getSize().width/2), (dim.height/2-getSize().height/2));
         setContentPane(startGame());
         setVisible(true);
     }

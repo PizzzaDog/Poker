@@ -3,6 +3,7 @@ package PokerStarsRemake;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,13 +25,13 @@ class CheckCombination {
   private static final String FOUROFAKIND_STRING = "Four Of A Kind";
   private static final String FULLHOUSE_STRING = "Full House";
   private static final String FLUSH_STRING = "Flush";
+  private static final String STRAIGHT_STRING = "Straight";
   private static final String THREEOFAKIND_STRING = "Three Of A Kind";
   private static final String TWOPAIR_STRING = "Two Pair";
   private static final String ONEPAIR_STRING = "One Pair";
   private static final String HIGHCARD_STRING = "High Card";
 
 
-    //private static int index = 0;
     static void setAllPlayers(ArrayList<Player> players){
         for (Player p : players) {
             setCombinations(p);
@@ -57,10 +58,25 @@ class CheckCombination {
         m = p.matcher(unsorted);
         if (m.find()) {
             player.setCombination(ROYALFLUSH_STRING);
-        } else {check3FourOfAKind(player);}
+        } else {check2StraightFlush(player);}
     }
 
-    //static void check2StraightFlush(){}
+    static void check2StraightFlush(Player player){
+    if (Game.computerHandNotNull()) {
+      int count = 1;
+      ArrayList<Card> cards = new ArrayList<>(Game.getComputerHand());
+      cards.addAll(player.getHand());
+      cards.sort(Comparator.comparing(Card::getCardIndex));
+      for (int i = 1; i < cards.size(); i++) {
+        if (cards.get(i).getCardIndex() == (cards.get(i - 1).getCardIndex() + 1)) {
+          count++;
+        } else count = (count == 5) ? 5 : 1;
+      }
+      if (count == 5) {
+        player.setCombination(STRAIGHT_STRING);
+      } else check7ThreeOfAKind(player);
+        } else check3FourOfAKind(player);
+    }
 
     private static void check3FourOfAKind(Player player) {
         p = Pattern.compile(FOUROFAKIND_REGEXP);
@@ -91,10 +107,25 @@ class CheckCombination {
         m = p.matcher(cards);
         if (m.find()) {
             player.setCombination(FLUSH_STRING);
-        } else {check7ThreeOfAKind(player);}
+        } else {check6Straight(player);}
     }
 
-    //static void check6Straight() {}
+    static void check6Straight(Player player) {
+    if (Game.computerHandNotNull()) {
+      int count = 1;
+      ArrayList<Card> cards = new ArrayList<>(Game.getComputerHand());
+      cards.addAll(player.getHand());
+      cards.sort(Comparator.comparing(Card::getCardPriority));
+      for (int i = 1; i < cards.size(); i++) {
+        if (cards.get(i).getCardPriority() == (cards.get(i - 1).getCardPriority() + 1)) {
+          count++;
+        } else count = (count == 5) ? 5 : 1;
+      }
+      if (count == 5) {
+        player.setCombination(STRAIGHT_STRING);
+      } else check7ThreeOfAKind(player);
+        } else check7ThreeOfAKind(player);
+    }
 
     private static void check7ThreeOfAKind(Player player) {
         p = Pattern.compile(THREEOFAKIND_REGEXP);

@@ -16,12 +16,13 @@ public class TestFrame extends JFrame {
         panel.add(new JLabel("test2"));
         JButton next = new JButton("go");
         panel.add(next);
-    next.addActionListener(
+        next.addActionListener(
             actionEvent -> setContentPane(nextRound(panel)));
         setSize(200, 200);
         setContentPane(panel);
         setVisible(true);
     }
+
     JPanel nextRound(JPanel panel) {
         panel.removeAll();
         panel.setLayout(new GridLayout(2,2,5,5));
